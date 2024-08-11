@@ -32,8 +32,27 @@
             <Label x:Name="DiskInterfaceLabel" />
             <Label Text="Partitions:" />
             <Label x:Name="DiskPartitionsLabel" />
-            
-            
+
+            <!-- Motherboard Information -->
+            <Label Text="Motherboard Information:" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Label x:Name="MotherboardLabel" />
+
+            <!-- GPU Information -->
+            <Label Text="GPU Information:" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Label x:Name="GPULabel" />
+
+            <!-- Operating System Information -->
+            <Label Text="Operating System Information:" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Label x:Name="OSLabel" />
+
+            <!-- Network Adapter Information -->
+            <Label Text="Network Adapter Information:" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Label x:Name="NetworkAdapterLabel" />
+
+            <!-- BIOS Information -->
+            <Label Text="BIOS Information:" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Label x:Name="BIOSLabel" />
+
         </VerticalStackLayout>
     </ScrollView>
 
