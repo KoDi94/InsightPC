@@ -22,6 +22,11 @@ namespace InsightPC
             RAMLabel.Text = hardwareInfo.GetRAMInfo();
             RAMSpeedLabel.Text = hardwareInfo.GetMemorySpeed();
             RAMManufacturerLabel.Text = hardwareInfo.GetMemoryManufacturer();
+
+            // Disk Information
+            DiskLabel.Text = hardwareInfo.GetDiskInfo();
+            DiskInterfaceLabel.Text = hardwareInfo.GetDiskInterfaceType();
+            DiskPartitionsLabel.Text = hardwareInfo.GetDiskPartitions();
         }
     }
 
@@ -101,6 +106,39 @@ namespace InsightPC
                 manufacturer += obj["Manufacturer"].ToString() + "\n";
             }
             return manufacturer;
+        }
+
+        public string GetDiskInfo()
+        {
+            string diskInfo = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_DiskDrive");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                diskInfo += $"{obj["Model"]}, {obj["Size"]} bytes\n";
+            }
+            return diskInfo;
+        }
+
+        public string GetDiskInterfaceType()
+        {
+            string interfaceType = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select InterfaceType from Win32_DiskDrive");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                interfaceType += obj["InterfaceType"].ToString() + "\n";
+            }
+            return interfaceType;
+        }
+
+        public string GetDiskPartitions()
+        {
+            string partitions = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Partitions from Win32_DiskDrive");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                partitions += obj["Partitions"].ToString() + "\n";
+            }
+            return partitions;
         }
 
     }
