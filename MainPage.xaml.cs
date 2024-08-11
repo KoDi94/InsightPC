@@ -27,6 +27,21 @@ namespace InsightPC
             DiskLabel.Text = hardwareInfo.GetDiskInfo();
             DiskInterfaceLabel.Text = hardwareInfo.GetDiskInterfaceType();
             DiskPartitionsLabel.Text = hardwareInfo.GetDiskPartitions();
+
+            // Motherboard Information
+            MotherboardLabel.Text = hardwareInfo.GetMotherboardInfo();
+
+            // GPU Information
+            GPULabel.Text = hardwareInfo.GetGPUInfo();
+
+            // Operating System Information
+            OSLabel.Text = hardwareInfo.GetOSInfo();
+
+            // Network Adapter Information
+            NetworkAdapterLabel.Text = hardwareInfo.GetNetworkAdapterInfo();
+
+            // BIOS Information
+            BIOSLabel.Text = hardwareInfo.GetBIOSInfo();
         }
     }
 
@@ -139,6 +154,60 @@ namespace InsightPC
                 partitions += obj["Partitions"].ToString() + "\n";
             }
             return partitions;
+        }
+        public string GetMotherboardInfo()
+        {
+            string motherboardInfo = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Manufacturer, Product, SerialNumber from Win32_BaseBoard");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                motherboardInfo = $"Manufacturer: {obj["Manufacturer"]}\nModel: {obj["Product"]}\nSerial Number: {obj["SerialNumber"]}";
+            }
+            return motherboardInfo;
+        }
+
+        public string GetGPUInfo()
+        {
+            string gpuInfo = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Name, DriverVersion, AdapterRAM from Win32_VideoController");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                gpuInfo = $"Name: {obj["Name"]}\nDriver Version: {obj["DriverVersion"]}\nVideo Memory: {Convert.ToInt64(obj["AdapterRAM"]) / 1024 / 1024} MB";
+            }
+            return gpuInfo;
+        }
+
+        public string GetOSInfo()
+        {
+            string osInfo = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Caption, Version, OSArchitecture from Win32_OperatingSystem");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                osInfo = $"Name: {obj["Caption"]}\nVersion: {obj["Version"]}\nArchitecture: {obj["OSArchitecture"]}";
+            }
+            return osInfo;
+        }
+
+        public string GetNetworkAdapterInfo()
+        {
+            string adapterInfo = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Name, MACAddress, Speed from Win32_NetworkAdapter where MACAddress is not null");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                adapterInfo += $"Name: {obj["Name"]}\nMAC Address: {obj["MACAddress"]}\nSpeed: {Convert.ToInt64(obj["Speed"]) / 1000000} Mbps\n\n";
+            }
+            return adapterInfo;
+        }
+
+        public string GetBIOSInfo()
+        {
+            string biosInfo = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Manufacturer, SMBIOSBIOSVersion, ReleaseDate from Win32_BIOS");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                biosInfo = $"Manufacturer: {obj["Manufacturer"]}\nVersion: {obj["SMBIOSBIOSVersion"]}\nRelease Date: {ManagementDateTimeConverter.ToDateTime(obj["ReleaseDate"].ToString())}";
+            }
+            return biosInfo;
         }
 
     }
