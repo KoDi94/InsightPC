@@ -23,6 +23,17 @@
             <Label x:Name="RAMSpeedLabel" />
             <Label Text="Manufacturer:" />
             <Label x:Name="RAMManufacturerLabel" />
+
+            <!-- Disk Drive Information -->
+            <Label Text="Disk Drive Information:" FontAttributes="Bold" Margin="0,20,0,0" />
+            <Label Text="Model:" />
+            <Label x:Name="DiskLabel" />
+            <Label Text="Interface Type:" />
+            <Label x:Name="DiskInterfaceLabel" />
+            <Label Text="Partitions:" />
+            <Label x:Name="DiskPartitionsLabel" />
+            
+            
         </VerticalStackLayout>
     </ScrollView>
 
