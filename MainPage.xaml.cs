@@ -4,8 +4,6 @@ namespace InsightPC
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
@@ -20,6 +18,10 @@ namespace InsightPC
             ProcessorLabel.Text = hardwareInfo.GetProcessorInfo();
             CoresLabel.Text = hardwareInfo.GetProcessorCores();
             ClockSpeedLabel.Text = hardwareInfo.GetProcessorClockSpeed();
+
+            RAMLabel.Text = hardwareInfo.GetRAMInfo();
+            RAMSpeedLabel.Text = hardwareInfo.GetMemorySpeed();
+            RAMManufacturerLabel.Text = hardwareInfo.GetMemoryManufacturer();
         }
     }
 
@@ -67,6 +69,40 @@ namespace InsightPC
             }
             return clockSpeed;
         }
+
+        public string GetRAMInfo()
+        {
+            string ramInfo = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_PhysicalMemory");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                ramInfo += $"{Convert.ToInt64(obj["Capacity"]) / 1024 / 1024} MB\n";
+            }
+            return ramInfo;
+        }
+
+        public string GetMemorySpeed()
+        {
+            string memorySpeed = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Speed from Win32_PhysicalMemory");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                memorySpeed += obj["Speed"].ToString() + " MHz\n";
+            }
+            return memorySpeed;
+        }
+
+        public string GetMemoryManufacturer()
+        {
+            string manufacturer = string.Empty;
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select Manufacturer from Win32_PhysicalMemory");
+            foreach (ManagementObject obj in searcher.Get())
+            {
+                manufacturer += obj["Manufacturer"].ToString() + "\n";
+            }
+            return manufacturer;
+        }
+
     }
 
 }
