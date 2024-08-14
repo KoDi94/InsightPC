@@ -10,7 +10,7 @@ namespace InsightPC
             LoadHardwareInfo();
         }
 
-        private void OnProcessorInfoClicked(object sender, EventArgs e)
+        private void OnButtonTapped(object sender, EventArgs e)
         {
             ProcessorInfoGrid.IsVisible = !ProcessorInfoGrid.IsVisible;
         }
