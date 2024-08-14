@@ -27,12 +27,16 @@
             </Grid.ColumnDefinitions>-->
 
             <!-- Processor Information Button -->
+
             <Frame Grid.Row="0"
                    BackgroundColor="White"
                    CornerRadius="10"
                    HasShadow="False"
                    Padding="0"
                    WidthRequest="250">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnButtonTapped"/>
+                </Frame.GestureRecognizers>
 
                 <Grid Padding="10">
                     <Grid.ColumnDefinitions>
