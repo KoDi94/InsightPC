@@ -10,6 +10,11 @@ namespace InsightPC
             LoadHardwareInfo();
         }
 
+        private void OnProcessorInfoClicked(object sender, EventArgs e)
+        {
+            ProcessorInfoGrid.IsVisible = !ProcessorInfoGrid.IsVisible;
+        }
+
         private void LoadHardwareInfo()
         {
             HardwareInfoService hardwareInfo = new HardwareInfoService();
@@ -29,19 +34,19 @@ namespace InsightPC
             DiskPartitionsLabel.Text = hardwareInfo.GetDiskPartitions();
 
             // Motherboard Information
-            MotherboardLabel.Text = hardwareInfo.GetMotherboardInfo();
+            //MotherboardLabel.Text = hardwareInfo.GetMotherboardInfo();
 
             // GPU Information
             GPULabel.Text = hardwareInfo.GetGPUInfo();
 
             // Operating System Information
-            OSLabel.Text = hardwareInfo.GetOSInfo();
+            //OSLabel.Text = hardwareInfo.GetOSInfo();
 
             // Network Adapter Information
-            NetworkAdapterLabel.Text = hardwareInfo.GetNetworkAdapterInfo();
+            //NetworkAdapterLabel.Text = hardwareInfo.GetNetworkAdapterInfo();
 
             // BIOS Information
-            BIOSLabel.Text = hardwareInfo.GetBIOSInfo();
+            //BIOSLabel.Text = hardwareInfo.GetBIOSInfo();
         }
     }
 
