@@ -11,143 +11,192 @@
     </ContentPage.MenuBarItems>
 
     <Grid Padding="10" RowSpacing="15" ColumnSpacing="15">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <!-- Processor Information Button -->
-        <Button 
-            Grid.Row="0" 
-            Text="Processor Information" 
-            FontAttributes="Bold" 
-            BackgroundColor="#ffffff" 
-            TextColor="#333333"
-            HeightRequest="50"
-            WidthRequest="300" 
-            Clicked="OnProcessorInfoClicked"/>
-
-        <!-- Processor Information Grid (Initially Hidden) -->
-        <Grid Grid.Row="1" x:Name="ProcessorInfoGrid" IsVisible="False">
-            <Grid.RowDefinitions>
+        <VerticalStackLayout Spacing="15" HorizontalOptions="Start">
+            <!--<Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            </Grid.ColumnDefinitions>-->
 
-            <Label Text="Name:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="ProcessorLabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
+            <!-- Processor Information Button -->
+            <Frame Grid.Row="0"
+                   BackgroundColor="White"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="250">
 
-            <Label Text="Cores:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="CoresLabel" Grid.Row="1" Grid.Column="1" TextColor="#333333" />
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-            <Label Text="Clock Speed:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="ClockSpeedLabel" Grid.Row="2" Grid.Column="1" TextColor="#333333" />
-        </Grid>
+                    <!-- Button Text -->
+                    <Label Text="Processor Information"
+                           VerticalOptions="Center"
+                           Padding="10,0"
+                           TextColor="#333333"
+                           FontAttributes="Bold"
+                           Grid.Column="0"/>
 
-        <!-- RAM Information Button -->
-        <Button 
-            Grid.Row="2" 
-            Text="RAM Information" 
-            FontAttributes="Bold" 
-            BackgroundColor="#ffffff" 
-            TextColor="#333333"
-            HeightRequest="50"
-            WidthRequest="300" />
+                    <!-- Icon with Shadow -->
+                    <Image Source="processor.png"
+                           WidthRequest="32"
+                           HeightRequest="32"
+                           Margin="0,0,10,0"
+                           Grid.Column="1">
+                        <Image.Shadow>
+                            <Shadow Brush="Black" Offset="2,2" Opacity="0.5" Radius="5"/>
+                        </Image.Shadow>
+                    </Image>
+                </Grid>
+            </Frame>
 
-        <!-- RAM Information Grid (Initially Hidden) -->
-        <Grid Grid.Row="3" x:Name="RAMInfoGrid" IsVisible="False">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <!-- Processor Information Grid (Initially Hidden) -->
+            <Grid Grid.Row="1" x:Name="ProcessorInfoGrid" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Label Text="Total:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="RAMLabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
+                <Label Text="Name:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="ProcessorLabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
 
-            <Label Text="Speed:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="RAMSpeedLabel" Grid.Row="1" Grid.Column="1" TextColor="#333333" />
+                <Label Text="Cores:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="CoresLabel" Grid.Row="1" Grid.Column="1" TextColor="#333333" />
 
-            <Label Text="Manufacturer:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="RAMManufacturerLabel" Grid.Row="2" Grid.Column="1" TextColor="#333333" />
-        </Grid>
+                <Label Text="Clock Speed:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="ClockSpeedLabel" Grid.Row="2" Grid.Column="1" TextColor="#333333" />
+            </Grid>
 
-        <!-- Disk Information Button -->
-        <Button 
-            Grid.Row="4" 
-            Text="Disk Information" 
-            FontAttributes="Bold" 
-            BackgroundColor="#ffffff" 
-            TextColor="#333333"
-            HeightRequest="50"
-            WidthRequest="300" />
+            <!-- RAM Information Button -->
+            <Frame Grid.Row="0"
+                   BackgroundColor="White"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="250">
+                
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-        <!-- Disk Information Grid (Initially Hidden) -->
-        <Grid Grid.Row="5" x:Name="DiskInfoGrid" IsVisible="False">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+                    <!-- Button Text -->
+                    <Label Text="RAM information"
+                           VerticalOptions="Center"
+                           Padding="10,0"
+                           TextColor="#333333"
+                           FontAttributes="Bold"
+                           Grid.Column="0"/>    
+                    <!-- Icon with Shadow -->
+                    <Image Source="ram.png"
+                           WidthRequest="32"
+                           HeightRequest="32"
+                           Margin="0,0,10,0"
+                           Grid.Column="1">
+                        <Image.Shadow>
+                            <Shadow Brush="Black" Offset="2,2" Opacity="0.5" Radius="5"/>
+                        </Image.Shadow>
+                    </Image>
+                </Grid>
+            </Frame>
 
-            <Label Text="Model:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="DiskLabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
+            <!-- RAM Information Grid (Initially Hidden) -->
+            <Grid Grid.Row="3" x:Name="RAMInfoGrid" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-            <Label Text="Interface:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="DiskInterfaceLabel" Grid.Row="1" Grid.Column="1" TextColor="#333333" />
+                <Label Text="Total:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="RAMLabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
 
-            <Label Text="Partitions:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="DiskPartitionsLabel" Grid.Row="2" Grid.Column="1" TextColor="#333333" />
-        </Grid>
+                <Label Text="Speed:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="RAMSpeedLabel" Grid.Row="1" Grid.Column="1" TextColor="#333333" />
 
-        <!-- GPU Information Button -->
-        <Button 
-            Grid.Row="6" 
-            Text="GPU Information" 
-            FontAttributes="Bold"
-            BackgroundColor="#ffffff" 
-            TextColor="#333333"
-            HeightRequest="50"
-            WidthRequest="300" />
+                <Label Text="Manufacturer:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="RAMManufacturerLabel" Grid.Row="2" Grid.Column="1" TextColor="#333333" />
+            </Grid>
 
-        <!-- GPU Information Grid (Initially Hidden) -->
-        <Grid Grid.Row="7" x:Name="GPUInfoGrid" IsVisible="False">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+            <!-- Disk Information Button -->
+            <Button 
+                Grid.Row="4" 
+                Text="Disk Information" 
+                FontAttributes="Bold" 
+                BackgroundColor="#ffffff" 
+                TextColor="#333333"
+                HeightRequest="50"
+                WidthRequest="300" />
 
-            <Label Text="Name:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
-            <Label x:Name="GPULabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
-        </Grid>
+            <!-- Disk Information Grid (Initially Hidden) -->
+            <Grid Grid.Row="5" x:Name="DiskInfoGrid" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
 
-        <!-- Add more buttons and grids for other hardware sections as needed -->
+                <Label Text="Model:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="DiskLabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
 
+                <Label Text="Interface:" Grid.Row="1" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="DiskInterfaceLabel" Grid.Row="1" Grid.Column="1" TextColor="#333333" />
+
+                <Label Text="Partitions:" Grid.Row="2" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="DiskPartitionsLabel" Grid.Row="2" Grid.Column="1" TextColor="#333333" />
+            </Grid>
+
+            <!-- GPU Information Button -->
+            <Button 
+                Grid.Row="6" 
+                Text="GPU Information" 
+                FontAttributes="Bold"
+                BackgroundColor="#ffffff" 
+                TextColor="#333333"
+                HeightRequest="50"
+                WidthRequest="300" />
+
+            <!-- GPU Information Grid (Initially Hidden) -->
+            <Grid Grid.Row="7" x:Name="GPUInfoGrid" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Name:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="GPULabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
+            </Grid>
+
+            <!-- Add more buttons and grids for other hardware sections as needed -->
+        </VerticalStackLayout>
     </Grid>
 
 </ContentPage>
