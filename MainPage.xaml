@@ -35,7 +35,7 @@
                    Padding="0"
                    WidthRequest="250">
                 <Frame.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnButtonTapped"/>
+                    <TapGestureRecognizer Tapped="OnProcessorInfoTapped"/>
                 </Frame.GestureRecognizers>
 
                 <Grid Padding="10">
@@ -94,7 +94,11 @@
                    HasShadow="False"
                    Padding="0"
                    WidthRequest="250">
-                
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRamInfoTapped"/>
+                </Frame.GestureRecognizers>
+
                 <Grid Padding="10">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
@@ -144,14 +148,42 @@
             </Grid>
 
             <!-- Disk Information Button -->
-            <Button 
-                Grid.Row="4" 
-                Text="Disk Information" 
-                FontAttributes="Bold" 
-                BackgroundColor="#ffffff" 
-                TextColor="#333333"
-                HeightRequest="50"
-                WidthRequest="300" />
+            <Frame Grid.Row="0"
+                   BackgroundColor="White"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="250">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnDiskInfoTapped"/>
+                </Frame.GestureRecognizers>
+
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Button Text -->
+                    <Label Text="Disk information"
+                           VerticalOptions="Center"
+                           Padding="10,0"
+                           TextColor="#333333"
+                           FontAttributes="Bold"
+                           Grid.Column="0"/> 
+                    <!-- Icon with Shadow -->
+                    <Image Source="disk.png"
+                           WidthRequest="32"
+                           HeightRequest="32"
+                           Margin="0,0,10,0"
+                           Grid.Column="1">
+                        <Image.Shadow>
+                            <Shadow Brush="Black" Offset="2,2" Opacity="0.5" Radius="5"/>
+                        </Image.Shadow>
+                    </Image>
+                </Grid>
+            </Frame>
 
             <!-- Disk Information Grid (Initially Hidden) -->
             <Grid Grid.Row="5" x:Name="DiskInfoGrid" IsVisible="False">
@@ -176,14 +208,42 @@
             </Grid>
 
             <!-- GPU Information Button -->
-            <Button 
-                Grid.Row="6" 
-                Text="GPU Information" 
-                FontAttributes="Bold"
-                BackgroundColor="#ffffff" 
-                TextColor="#333333"
-                HeightRequest="50"
-                WidthRequest="300" />
+            <Frame Grid.Row="0"
+                   BackgroundColor="White"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="250">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnGpuInfoTapped"/>
+                </Frame.GestureRecognizers>
+
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Button Text -->
+                    <Label Text="GPU information"
+                           VerticalOptions="Center"
+                           Padding="10,0"
+                           TextColor="#333333"
+                           FontAttributes="Bold"
+                           Grid.Column="0"/>    
+                    <!-- Icon with Shadow -->
+                    <Image Source="gpu.png"
+                           WidthRequest="32"
+                           HeightRequest="32"
+                           Margin="0,0,10,0"
+                           Grid.Column="1"> 
+                        <Image.Shadow>
+                            <Shadow Brush="Black" Offset="2,2" Opacity="0.5" Radius="5"/>
+                        </Image.Shadow>
+                    </Image>
+                </Grid>
+            </Frame>
 
             <!-- GPU Information Grid (Initially Hidden) -->
             <Grid Grid.Row="7" x:Name="GPUInfoGrid" IsVisible="False">
@@ -197,6 +257,110 @@
 
                 <Label Text="Name:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
                 <Label x:Name="GPULabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
+            </Grid>
+
+            <!-- Network Information Button -->
+            <Frame Grid.Row="0"
+                   BackgroundColor="White"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="250">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNetworkInfoTapped"/>
+                </Frame.GestureRecognizers>
+
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Button Text -->
+                    <Label Text="Network information"
+                           VerticalOptions="Center"
+                           Padding="10,0"
+                           TextColor="#333333"
+                           FontAttributes="Bold"
+                           Grid.Column="0"/>
+                    <!-- Icon with Shadow -->
+                    <Image Source="network.png"
+                           WidthRequest="32"
+                           HeightRequest="32"
+                           Margin="0,0,10,0"
+                           Grid.Column="1">
+                        <Image.Shadow>
+                            <Shadow Brush="Black" Offset="2,2" Opacity="0.5" Radius="5"/>
+                        </Image.Shadow>
+                    </Image>
+                </Grid>
+            </Frame>
+
+            <!-- Network Information Grid (Initially Hidden) -->
+            <Grid Grid.Row="8" x:Name="NetworkInfoGrid" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Name:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="NetworkLabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
+            </Grid>
+
+            <!-- Motherboard Information Button -->
+            <Frame Grid.Row="0"
+                   BackgroundColor="White"
+                   CornerRadius="10"
+                   HasShadow="False"
+                   Padding="0"
+                   WidthRequest="250">
+
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMotherboardInfoTapped"/>
+                </Frame.GestureRecognizers>
+
+                <Grid Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Button Text -->
+                    <Label Text="Motherboard information"
+                           VerticalOptions="Center"
+                           Padding="10,0"
+                           TextColor="#333333"
+                           FontAttributes="Bold"
+                           Grid.Column="0"/>    
+                    <!-- Icon with Shadow -->
+                    <Image Source="motherboard.png"
+                           WidthRequest="32"
+                           HeightRequest="32"
+                           Margin="0,0,10,0"
+                           Grid.Column="1">
+                        <Image.Shadow>
+                            <Shadow Brush="Black" Offset="2,2" Opacity="0.5" Radius="5"/>
+                        </Image.Shadow>
+                    </Image>
+                </Grid>
+            </Frame>
+
+            <!-- Network Information Grid (Initially Hidden) -->
+            <Grid Grid.Row="9" x:Name="MotherboardInfoGrid" IsVisible="False">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Name:" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" TextColor="#555555" />
+                <Label x:Name="MotherboardLabel" Grid.Row="0" Grid.Column="1" TextColor="#333333" />
             </Grid>
 
             <!-- Add more buttons and grids for other hardware sections as needed -->
