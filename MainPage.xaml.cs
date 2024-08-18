@@ -10,9 +10,34 @@ namespace InsightPC
             LoadHardwareInfo();
         }
 
-        private void OnButtonTapped(object sender, EventArgs e)
+        private void OnProcessorInfoTapped(object sender, EventArgs e)
         {
             ProcessorInfoGrid.IsVisible = !ProcessorInfoGrid.IsVisible;
+        }
+
+        private void OnRamInfoTapped(object sender, EventArgs e)
+        {
+            RAMInfoGrid.IsVisible = !RAMInfoGrid.IsVisible;
+        }
+
+        private void OnDiskInfoTapped(object sender, EventArgs e)
+        {
+            DiskInfoGrid.IsVisible = !DiskInfoGrid.IsVisible;
+        }
+
+        private void OnGpuInfoTapped(object sender, EventArgs e)
+        {
+            GPUInfoGrid.IsVisible = !GPUInfoGrid.IsVisible;
+        }
+
+        private void OnNetworkInfoTapped(object sender, EventArgs e)
+        {
+            NetworkInfoGrid.IsVisible = !NetworkInfoGrid.IsVisible;
+        }
+
+        private void OnMotherboardInfoTapped(object sender, EventArgs e)
+        {
+            MotherboardInfoGrid.IsVisible = !MotherboardInfoGrid.IsVisible;
         }
 
         private void LoadHardwareInfo()
@@ -34,7 +59,7 @@ namespace InsightPC
             DiskPartitionsLabel.Text = hardwareInfo.GetDiskPartitions();
 
             // Motherboard Information
-            //MotherboardLabel.Text = hardwareInfo.GetMotherboardInfo();
+            MotherboardLabel.Text = hardwareInfo.GetMotherboardInfo();
 
             // GPU Information
             GPULabel.Text = hardwareInfo.GetGPUInfo();
@@ -43,7 +68,7 @@ namespace InsightPC
             //OSLabel.Text = hardwareInfo.GetOSInfo();
 
             // Network Adapter Information
-            //NetworkAdapterLabel.Text = hardwareInfo.GetNetworkAdapterInfo();
+            NetworkLabel.Text = hardwareInfo.GetNetworkAdapterInfo();
 
             // BIOS Information
             //BIOSLabel.Text = hardwareInfo.GetBIOSInfo();
